@@ -1,0 +1,28 @@
+{
+  "name": "myapp",
+  "homepage": "https://github.com/GustavoGottardi/myapp",
+  "authors": [
+    "Gustavo Gottardi"
+  ],
+  "description": "My webapp scaffold front-end, support NodeJS + Express + AngularJS",
+  "main": "index.html",
+  "keywords": [
+    "myapp"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "angular": "^1.5.6",
+    "foundation": "^5.5.3",
+    "angular-ui-router": "~0.2.15",
+    "Font-Awesome-Stylus": "font-awesome-stylus#~4.4.0",
+    "components-font-awesome": "~4.4.0"
+  }
+}

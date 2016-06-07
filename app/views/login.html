@@ -1,0 +1,32 @@
+<section id="login" class="login row root">
+	<div ng-controller="loginController" ng-init="autoAuthenticate('google')">
+		<div class="container">
+			<div class="row">
+				<div class="center-form panel">
+					<div class="panel-body">
+						<h2 class="text-center">Log in</h2>
+						<form method="post" ng-submit="login()" name="loginForm" class="ng-pristine ng-invalid ng-invalid-required">
+							<div class="form-group has-feedback">
+								<input class="form-control input-lg ng-pristine ng-invalid ng-invalid-required ng-touched" type="text" name="username" ng-model="user.username" placeholder="Username" required="" autofocus="" style="">
+								<span class="fa fa-at form-control-feedback"></span>
+							</div>
+							<div class="form-group has-feedback">
+								<input class="form-control input-lg ng-pristine ng-untouched ng-invalid ng-invalid-required" type="password" name="password" ng-model="user.password" placeholder="Password" required="">
+								<span class="fa fa-key form-control-feedback"></span>
+							</div>
+							<button type="submit" ng-disabled="loginForm.$invalid" class="btn btn-lg  btn-block btn-success" disabled="disabled">Log in</button>
+							<br>						
+							<div class="signup-or-separator">
+								<h6 class="text">or</h6>
+								<hr>
+							</div>
+						</form>
+						<button class="btn btn-block btn-google-plus" ng-click="authenticate('google')">
+							<span class="fa fa-google-plus"></span>Sign in with Google
+						</button>       
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

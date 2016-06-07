@@ -1,0 +1,55 @@
+<section id="contatos" class="contatos">
+	<header class="row">
+		<h1 class="breadcrumbs">Contatos</h1>
+	</header>
+	<div class="content">
+		<div id="lista-contatos">
+		    <table class="table table-striped">
+
+		        <tr>
+		            <th>Nome</th>
+		            <th>E-mail</th>
+		            <th>Telefone</th>
+		            <th>Opções</th>
+		        </tr>
+
+		        <!-- LOOP PARA CARREGAR TODOS OS CONTATOS EM $scope.contatos -->
+		        <tr ng-repeat="contato in contatos">
+		            <td>{{ contato.nome }}</td>
+		            <td>{{ contato.email }}</td>
+		            <td>{{ contato.telefone }}</td>
+		            <td>
+		                <button type="button" class="btn btn-default" ng-click="editarContato(contato._id)">Editar</button>
+		                <button type="button" class="btn btn-primary" ng-click="deletarContato(contato._id)">Remover</button>
+		            </td>
+		        </tr>
+
+		    </table>
+		</div>
+
+		<!-- FORMULÁRIO PARA CRIARMOS UM NOVO CONTATO -->
+		<div id="contato-form">
+		    <hr>
+		    <form>
+		        <div class="form-group col-md-3">
+		            <label for="nomeContato">Nome</label>
+		            <input type="text" class="form-control" id="nomeContato" placeholder="Nome Sobrenome" ng-model="formContato.nome">
+		        </div>
+		        <div class="form-group col-md-3">
+		            <label for="emailContato">E-mail</label>
+		            <input type="text" class="form-control" id="emailContato" placeholder="exemplo@exemplo.com" ng-model="formContato.email">
+		        </div>
+		        <div class="form-group col-md-3">
+		            <label for="telefoneContato">Telefone</label>
+		            <input type="text" class="form-control" id="telefoneContato" placeholder="(00) 0000-0000" ng-model="formContato.telefone">
+		        </div>
+		        <div class="form-group col-md-3">
+		            <!-- createToDo() WILL CREATE NEW TODOS -->
+		            <button type="submit" class="btn btn-primary" ng-click="criarContato()">Criar</button>
+		            <button type="submit" class="btn btn-info" ng-click="atualizarContato()">Atualizar</button>
+		        </div>
+		    </form>
+		</div>
+	</div>
+</section>
+
