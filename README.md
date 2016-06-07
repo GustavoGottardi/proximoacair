@@ -8,10 +8,10 @@ Clone this repository and copy all files to yours folder of webapp
 # Required
 Dependencies required to usage:
 
-NodeJS
-MongoDB
-Npm
-Nodemoon
-Grunt
-Bower
-Compass
+- NodeJS
+- MongoDB
+- Npm
+- Nodemoon
+- Grunt
+- Bower
+- Compass
