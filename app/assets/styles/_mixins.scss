@@ -1,0 +1,14 @@
+@mixin font-size($sizeValue: 1.6) {
+  font-size: ($sizeValue * 10) + rem;
+  font-size: $sizeValue + px;
+}
+
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return #{$remSize}rem;
+}
+
+@mixin fontSize($size) {
+  font-size: $size; //Fallback in px
+  font-size: calculateRem($size);
+}

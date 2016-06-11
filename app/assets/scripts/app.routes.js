@@ -25,12 +25,12 @@ myApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', funct
 		resolve: {
           loginRequired: loginRequired
         }*/
-	}).state('contatos', {
-		url: '/contatos',
-		templateUrl: '/views/contatos.html',
-		controller: 'mainController',
+	}).state('deputados', {
+		url: '/deputados',
+		templateUrl: '/views/deputados.html',
+		controller: 'deputadosController',
 		data: {
-          pageTitle: 'MyApp - Contatos'
+          pageTitle: 'MyApp - Deputados'
         }/*,
 		resolve: {
           loginRequired: loginRequired

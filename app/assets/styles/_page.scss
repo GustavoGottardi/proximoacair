@@ -1,0 +1,76 @@
+body{
+	background: $gray-light;
+	font-size: 16px;
+	.header{
+		.top-bar{
+			ul{
+				margin: 0;
+				padding: 0 10px;
+			}
+		}
+	}
+
+	.politicians{
+		header{
+			padding: 0 20px;
+			margin: 20px 0 40px; 
+			h1{
+				margin: 0;
+			}
+		}
+		.list-politicians{
+			padding: 0;
+			list-style: none;
+			li{
+				.item-list, .overlay-voted{
+					background: $white;
+					min-height: 250px;
+					margin: 2% 2% 10%;
+    				padding: 5% 5% 0;
+    				@include radius(15px);
+    				@include box-shadow($gray-dark 0 0 4px);
+    				cursor: url('../images/cursor-sight.png'), auto;
+    				&:hover{
+    					@include box-shadow(red 0 0 8px);
+    				}
+    				.img-politicians{
+    					@extend .full-width;
+    					@extend %text-center;
+    					margin: 0 0 15px;
+    				}
+    				.name-politicians, .political-party{
+    					@extend %display-block;
+    					@include fontSize(13px);
+    					@extend %text-center;
+    				}
+    				.political-party{
+    					font-weight: bold;
+    				}
+				}
+				.overlay-voted{
+					@extend %display-none;
+					@extend %position-absolute;
+					width: 84%;
+					height: 252px;
+					margin: -11px -11px;
+					background: url('../images/overlay-red.png') repeat;
+					.text-wanted{
+						@extend %position-absolute;
+						@extend %display-block;
+						width: 100%;
+						color: $white;
+						top: 96px;
+    					left: -10px;
+						@extend %text-center;
+    					font-weight: bold;
+    					@include fontSize(34px);
+    					transform: rotate(-45deg);
+					}
+				}
+				.item-list:hover > .overlay-voted{
+					@extend %display-block;
+				}
+			}
+		}
+	}
+}

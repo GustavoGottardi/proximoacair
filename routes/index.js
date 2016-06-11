@@ -3,92 +3,115 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var router = express.Router();
-var Contato = mongoose.model('Contato');
+var Politicos = mongoose.model('Politicos');
 var app = express();
+
+var fs = require('fs');
  
 // ROTA BUSCAR ============================================
-router.get('/api/contatos', function(req, res) {
-    // utilizaremos o mongoose para buscar todos os contatos no BD
-    Contato.find(function(err, contatos) {
+router.get('/api/politicos', function(req, res) {
+    // utilizaremos o mongoose para buscar todos os politicos no BD
+    Politicos.find(function(err, politicos) {
         // Em caso de erros, envia o erro na resposta
         if (err){
             res.send(err)
         }
-        // Retorna todos os contatos encontrados no BD
-        res.json(contatos); 
+        // Retorna todos os politicos encontrados no BD
+        res.json(politicos);
+    });
+});
+
+router.get('/api/getjsondeputados', function(req, res) {
+    fs.readFile('deputados.json', 'utf8', function (err,data) {
+      if (err) {
+          return console.log(err);
+      }
+      var json_formated = JSON.parse(data);
+      res.json(json_formated);
     });
 });
  
 // ROTA CRIAR =============================================
-router.post('/api/contatos', function(req, res) {
-    // Cria um contato, as informações são enviadas por uma requisição AJAX pelo Angular
-    Contato.create({
-        nome : req.body.nome,
-        email : req.body.email,
-        telefone : req.body.telefone,
-        done : false
-    }, function(err, contato) {
+router.post('/api/politicos', function(req, res) {
+    // Cria um politico, as informações são enviadas por uma requisição AJAX pelo Angular
+    Politicos.create({
+        anexo: req.body.anexo,
+        codOrcamento: req.body.codOrcamento,
+        condicao: req.body.condicao,
+        email: req.body.email,
+        fone: req.body.fone,
+        gabinete: req.body.gabinete,
+        idParlamentar: req.body.idParlamentar,
+        ideCadastro: req.body.ideCadastro,
+        matricula: req.body.matricula,
+        nome: req.body.nome,
+        nomeParlamentar: req.body.nomeParlamentar,
+        partido: req.body.partido,
+        sexo: req.body.sexo,
+        uf: req.body.uf,
+        urlFoto: req.body.urlFoto
+    }, function(err, politicos) {
         if (err){
             res.send(err);
         }
-        // Busca novamente todos os contatos após termos inserido um novo registro
-        Contato.find(function(err, contatos) {
+        // Busca novamente todos os politicos após termos inserido um novo registro
+        Politicos.find(function(err, politicos) {
             if (err){
                 res.send(err)
             }
-            res.json(contatos);
+            res.json(politicos);
         });
     });
  
 });
  
 // ROTA DELETAR ============================================
-router.delete('/api/contatos/:contato_id', function(req, res) {
-    // Remove o contato no Model pelo parâmetro _id
-    Contato.remove({
-        _id : req.params.contato_id
-    }, function(err, contato) {
+router.delete('/api/politicos/:politicos_id', function(req, res) {
+    // Remove o politicos no Model pelo parâmetro _id
+    Politicos.remove({
+        _id : req.params.politicos_id
+    }, function(err, politicos) {
         if (err){
             res.send(err);
         }
-        // Busca novamente todos os contatos após termos removido o registro
-        Contato.find(function(err, contatos) {
+        // Busca novamente todos os politicos após termos removido o registro
+        Politicos.find(function(err, politicos) {
             if (err){
                 res.send(err)
             }
-            res.json(contatos);
+            res.json(politicos);
         });
     });
 });
  
 // ROTA EDITAR =============================================
-router.get('/api/contatos/:contato_id', function(req, res) {
-    // Busca o contato no Model pelo parâmetro id
-    Contato.findOne({
-        _id : req.params.contato_id
-    }, function(err, contato) {
+router.get('/api/politicos/:politicos_id', function(req, res) {
+    // Busca o politicos no Model pelo parâmetro id
+    Politicos.findOne({
+        _id : req.params.politicos_id
+    }, function(err, politicos) {
         if (err){
             res.send(err);
         }
-        res.json(contato);
+        res.json(politicos);
     });
 });
  
 // ROTA ATUALIZAR ==========================================
-router.put('/api/contatos/:contato_id', function(req, res) {
-    // Busca o contato no Model pelo parâmetro id
-    var contatoData = req.body;
-    var id = req.params.contato_id;
+router.put('/api/politicos/:politicos_id', function(req, res) {
+    // Busca o politicos no Model pelo parâmetro id
+    var politicosData = req.body;
+    var id = req.params.politicos_id;
  
-    Contato.update({
+    Politicos.update({
         _id: id 
-    }, contatoData, { 
+    }, politicosData, { 
         upsert: true
-    }, function(err, contato) {
+    }, function(err, politicos) {
         if (err){
             res.send(err);
         }
-        res.json(contato);
+        res.json(politicos);
     });
     
 });

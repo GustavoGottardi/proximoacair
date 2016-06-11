@@ -78,7 +78,7 @@ module.exports = function(grunt) {
           './dist/views/index.html': './app/views/index.html', 
           './dist/views/login.html': './app/views/login.html', 
           './dist/views/dashboard.html': './app/views/dashboard.html', 
-          './dist/views/contatos.html': './app/views/contatos.html', 
+          './dist/views/deputados.html': './app/views/deputados.html', 
         }
       }
     },
