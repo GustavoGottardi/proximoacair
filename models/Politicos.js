@@ -17,7 +17,8 @@ var PoliticosSchema = new mongoose.Schema({
   partido: String,
   sexo: String,
   uf: String,
-  urlFoto: String
+  urlFoto: String,
+  votos: Number
 });
  
 //Define o model Politicos

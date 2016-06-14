@@ -18,6 +18,11 @@ body{
 				margin: 0;
 			}
 		}
+		.searchPoliticians{
+			.inputSearch{
+				@include radius(10px);
+			}
+		}
 		.list-politicians{
 			padding: 0;
 			list-style: none;
@@ -25,7 +30,8 @@ body{
 				.item-list, .overlay-voted{
 					background: $white;
 					min-height: 250px;
-					margin: 2% 2% 10%;
+					max-width: 190px;
+					margin: 0 auto 30px auto;
     				padding: 5% 5% 0;
     				@include radius(15px);
     				@include box-shadow($gray-dark 0 0 4px);
@@ -52,7 +58,8 @@ body{
 					@extend %position-absolute;
 					width: 84%;
 					height: 252px;
-					margin: -11px -11px;
+					margin: 0 0 0px -95px;
+					left: 50%;
 					background: url('../images/overlay-red.png') repeat;
 					.text-wanted{
 						@extend %position-absolute;
@@ -67,7 +74,7 @@ body{
     					transform: rotate(-45deg);
 					}
 				}
-				.item-list:hover > .overlay-voted{
+				&.voted > .overlay-voted{
 					@extend %display-block;
 				}
 			}
