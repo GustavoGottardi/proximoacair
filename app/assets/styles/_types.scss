@@ -2,3 +2,13 @@
 .column.nopadding{
 	padding: 0 0 0 0;
 }
+
+.nopaddingleft,
+.column.nopaddingleft{
+	padding-left: 0;
+}
+
+.nopaddingright,
+.column.nopaddingright{
+	padding-right: 0;
+}

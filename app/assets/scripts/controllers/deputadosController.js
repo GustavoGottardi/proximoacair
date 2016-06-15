@@ -56,10 +56,10 @@ myApp.controller('deputadosController',['$scope','$rootScope','requestFactory','
 		var current_votos = votos + 1;
 		json.votos = current_votos;
 		var id_politicians = json._id;
+		console.log(json);
 		(function getRequestAjax() {
 			requestFactory.getRequestAjax('PUT','/api/politicos/'+id_politicians,json,'insertVotes');
 			$rootScope.$on('insertVotes', function (event, data, status) {
-			    console.log(data);
 			});
 		})();
 	};
