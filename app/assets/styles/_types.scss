@@ -12,3 +12,14 @@
 .column.nopaddingright{
 	padding-right: 0;
 }
+
+form{
+	.help-block{
+		@extend %display-block;
+		@extend %position-relative;
+		background: $bg-help-block;
+		color: $white;
+		padding: 2px 10px 0;
+		margin: -17px 0 10px 0;
+	}
+}

@@ -59,7 +59,6 @@ myApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', funct
 		return deferred.promise;
 	};
 
-	console.log("Aqui");
 	var skipIfLoggedIn = function($q, $location, $auth) {
 		console.log("Entrou");
 		var deferred = $q.defer();
