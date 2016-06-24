@@ -24,4 +24,9 @@ myApp.controller('mainController',['$scope','$rootScope','requestFactory','$auth
             $scope.passwordConfirm=false;
         }
     };
+    
+    //Verify login authenticate
+    $scope.isAuthenticated = function() {
+        return $auth.isAuthenticated();
+    };
 }]);

@@ -38,7 +38,7 @@ router.post('/auth/authenticate', function(req, res) {
 
 //Rota de login de users
 router.post('/auth/signup', function(req, res) {
-    Users.findOne({email: req.body.email, password: req.body.password}, function(err, user) {
+    Users.findOne({email: req.body.email}, function(err, user) {
         if (err) {
             res.json({
                 type: false,

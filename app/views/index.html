@@ -21,7 +21,7 @@
 		<nav class="top-bar" data-topbar role="navigation">
 			<ul>
 				<li class="float-left"><img src="./assets/images/logo.png" class="logo" height="30" width="150"></li>
-				<li class="float-right"><a href="javascript:void(0);" ng-click="logout();">Sair</a></li>
+				<li class="float-right" ng-if="isAuthenticated()"><a href="javascript:void(0);" ng-click="logout();">Sair</a></li>
 			</ul>
 		</nav>
 	</header>

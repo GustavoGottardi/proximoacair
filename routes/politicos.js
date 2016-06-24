@@ -8,7 +8,7 @@ var app = express();
 var fs = require('fs');
  
 // ROTA BUSCAR ============================================
-router.get('/api/politicos', function(req, res) {
+router.get('/api/politicos', ensureAuthorized, function(req, res) {
     // utilizaremos o mongoose para buscar todos os politicos no BD
     Politicos.find(function(err, politicos) {
         // Em caso de erros, envia o erro na resposta
@@ -20,7 +20,7 @@ router.get('/api/politicos', function(req, res) {
     });
 });
 
-router.get('/api/getjsondeputados', function(req, res) {
+router.get('/api/getjsondeputados', ensureAuthorized, function(req, res) {
     fs.readFile('deputados.json', 'utf8', function (err,data) {
       if (err) {
           return console.log(err);
@@ -31,7 +31,7 @@ router.get('/api/getjsondeputados', function(req, res) {
 });
  
 // ROTA CRIAR =============================================
-router.post('/api/politicos', function(req, res) {
+router.post('/api/politicos', ensureAuthorized, function(req, res) {
     // Cria um politico, as informações são enviadas por uma requisição AJAX pelo Angular
     Politicos.create({
         anexo: req.body.anexo,
@@ -65,7 +65,7 @@ router.post('/api/politicos', function(req, res) {
 });
  
 // ROTA DELETAR ============================================
-router.delete('/api/politicos/:politicos_id', function(req, res) {
+router.delete('/api/politicos/:politicos_id', ensureAuthorized, function(req, res) {
     // Remove o politicos no Model pelo parâmetro _id
     Politicos.remove({
         _id : req.params.politicos_id
@@ -84,7 +84,7 @@ router.delete('/api/politicos/:politicos_id', function(req, res) {
 });
  
 // ROTA EDITAR =============================================
-router.get('/api/politicos/:politicos_id', function(req, res) {
+router.get('/api/politicos/:politicos_id', ensureAuthorized, function(req, res) {
     // Busca o politicos no Model pelo parâmetro id
     Politicos.findOne({
         _id : req.params.politicos_id
@@ -97,7 +97,7 @@ router.get('/api/politicos/:politicos_id', function(req, res) {
 });
  
 // ROTA ATUALIZAR ==========================================
-router.put('/api/politicos/:politicos_id', function(req, res) {
+router.put('/api/politicos/:politicos_id', ensureAuthorized, function(req, res) {
     // Busca o politicos no Model pelo parâmetro id
     var politicosData = req.body;
     var id = req.params.politicos_id;
@@ -115,5 +115,22 @@ router.put('/api/politicos/:politicos_id', function(req, res) {
     
 });
 
+//Cabeçalhos de requisição são interceptados e o cabeçalho authorization é extraído
+function ensureAuthorized(req, res, next) {
+    var bearerToken;
+    var bearerHeader = req.headers["authorization"];
+    if (typeof bearerHeader !== 'undefined') {
+        var bearer = bearerHeader.split(" ");
+        bearerToken = bearer[1];
+        req.token = bearerToken;
+        next();
+    } else {
+        res.send(403);
+    }
+}
+
+process.on('uncaughtException', function(err) {
+    console.log(err);
+});
 
 module.exports = router;
