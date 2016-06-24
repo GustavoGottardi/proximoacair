@@ -1,13 +1,15 @@
 // Lib Compass
 @import "compass/css3";
 
-//Foundation Framework
+//Import Foundation Framework
 @import 
 "foundation/settings",
 "normalize";
 
 // Import individual Foundation partials
 @import 
+"foundation/components/type",
+"foundation/components/visibility",
 "foundation/components/grid",
 "foundation/components/forms",
 'foundation/components/global',
@@ -24,4 +26,5 @@
 "./placeholders",
 "./functions",
 "./mixins",
-"./page";
+"./page",
+"./login";

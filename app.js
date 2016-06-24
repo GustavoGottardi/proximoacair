@@ -4,14 +4,18 @@ var app = express();
 // mongoose for mongodb
 var mongoose = require('mongoose');
 // solicitações para log no console (express4)
-var logger = require('morgan');
+var morgan = require('morgan');
 // puxar informações por POST HTML (express4)
 var bodyParser = require('body-parser');
 // simular DELETE e PUT (express4)
 var methodOverride = require('method-override');
 
+var jwt = require('jsonwebtoken');
+
 // Requisição ao arquivo que cria nosso model Politicos
 require('./models/Politicos');
+// Requisição ao arquivo que cria nosso model Users
+require('./models/Users');
 
 // definindo local de arquivos públicos
 app.use(express.static(__dirname + '/dist'));
@@ -20,7 +24,7 @@ app.set('views', __dirname + '/dist/views');
 // definindo view engine como html
 app.set('view engine', 'html');
 // logando todas as requisições no console
-app.use(logger('dev'));
+app.use(morgan('dev'));
 // parse application/x-www-form-urlencoded                                    
 app.use(bodyParser.urlencoded({'extended':'true'}));
 // parse application/json          
@@ -29,9 +33,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(methodOverride());
 
+
 // start up the server
 // conectando ao mongodb no localhost, criando o banco de dados Politicos
-mongoose.connect('mongodb://localhost/politicos');
+mongoose.connect('mongodb://localhost/myapp');
 var db = mongoose.connection;
 // Caso haja erro ao se conectar emite um log
 db.on('error', console.error);
@@ -53,6 +58,16 @@ function startServer(){
 };
 
 // Incluindo nossas rotas definidas no arquivo routes/index.js
-var index = require('./routes/index');
+var politicos = require('./routes/politicos');
+var users = require('./routes/users');
 // definindo nossas rotas na aplicação
-app.use('/', index);
+app.use('/', politicos);
+app.use('/', users);
+
+//Liberamos permissão de requisições que venham de domínios diferentes
+app.use(function(req, res, next) {
+res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
+    next();
+});

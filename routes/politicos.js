@@ -5,7 +5,6 @@ var mongoose = require('mongoose');
 var router = express.Router();
 var Politicos = mongoose.model('Politicos');
 var app = express();
-
 var fs = require('fs');
  
 // ROTA BUSCAR ============================================

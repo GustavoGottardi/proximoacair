@@ -1,0 +1,27 @@
+.log-in-form{
+	background: #fff;
+    border: 1px solid $gray-light;
+    @include border-radius(10px);
+    margin: 25% 0 0 0;
+    padding-top: 15px;
+	label{
+		position: relative;
+		i.fa{
+			position: absolute;
+			top: 12px;
+			left: 12px;
+		}
+		input{
+			padding-left: 30px;
+		}
+	}
+	p{
+		margin-top: 0;
+	}
+	button{
+		margin-bottom: 0;
+	}
+	.forgot-password{
+		color: $red-normal;
+	}
+}

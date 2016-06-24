@@ -1,9 +1,9 @@
-<section id="login" class="login row root">
+<section id="signup" class="signup row root">
 	<div class="row">
 		<div class="medium-6 medium-centered large-4 large-centered columns">
-			<form method="post" name="loginForm" class="ng-pristine ng-invalid ng-invalid-required">
+			<form method="post" name="signupForm" class="ng-pristine ng-invalid ng-invalid-required">
 				<div class="column log-in-form">
-					<h4 class="text-center">LOGIN</h4>
+					<h4 class="text-center">Inscrever-se</h4>
 					<hr />
 					<label>
 						<input class="form-control input-lg ng-pristine ng-invalid ng-invalid-required ng-touched" type="text" name="email" ng-model="user.email" placeholder="E-mail" required="" autofocus="" style="">
@@ -15,8 +15,7 @@
 					</label>
 					<input id="show-password" type="checkbox">
 					<label for="show-password">Mostrar Senha</label>
-					<p><button type="submit" ng-disabled="loginForm.$invalid" ng-click="login(user)" class="button alert expand" value="Log In" disabled="disabled">Entrar</button></p>
-					<p class="text-center"><a href="/forgot-password" class="forgot-password">Esqueceu sua senha?</a> | <a href="/signup" class="forgot-password">Cadastrar-se</a></p>   
+					<p><button type="submit" ng-disabled="signupForm.$invalid" ng-click="signup(user);" class="button alert expand" value="Log In" disabled="disabled">Cadastrar-se</button></p>
 				</div>
 			</form>
 		</div>

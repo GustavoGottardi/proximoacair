@@ -24,7 +24,8 @@ module.exports = function(grunt) {
         files: {
           './dist/assets/scripts/libs.min.js': [
             './bower_components/angular/angular.js',
-            './bower_components/angular-ui-router/release/angular-ui-router.js'
+            './bower_components/angular-ui-router/release/angular-ui-router.js',
+            './bower_components/satellizer/satellizer.js'
           ],
           './dist/assets/scripts/main.min.js': ['./app/assets/scripts/**/*.js']
         }
@@ -49,7 +50,7 @@ module.exports = function(grunt) {
     cssmin: {
       build: {
         files: {
-          './dist/assets/css/main.min.css': ['./app/assets/css/main.css']
+          './dist/assets/css/main.min.css': ['./app/assets/css/main.css','./bower_components/font-awesome/css/font-awesome.css']
         }
       }
     },
@@ -76,7 +77,8 @@ module.exports = function(grunt) {
         },
         files: {                                       // Dictionary of files - 'destination': 'source'
           './dist/views/index.html': './app/views/index.html', 
-          './dist/views/login.html': './app/views/login.html', 
+          './dist/views/login.html': './app/views/login.html',
+          './dist/views/signup.html': './app/views/signup.html',
           './dist/views/dashboard.html': './app/views/dashboard.html', 
           './dist/views/deputados.html': './app/views/deputados.html',
         }

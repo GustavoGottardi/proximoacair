@@ -26,23 +26,11 @@ myApp.controller('deputadosController',['$scope','$rootScope','requestFactory','
 	});
 	*/
 
+
 	(function getRequestAjax() {
 	requestFactory.getRequestAjax('GET','/api/politicos/','','getPoliticos');
 		$rootScope.$on('getPoliticos', function (event, data, status) {
 			$scope.politiciansList = data;
-			console.log($scope.politiciansList);
-			/* Só desmarcar para realizar o delete de todos os políticos
-			angular.forEach(data, function(json){
-				var id = json._id;			
-				(function getRequestAjax() {
-					requestFactory.getRequestAjax('DELETE','/api/politicos/'+id,'','insertPoliticos');
-					$rootScope.$on('insertPoliticos', function (event, data, status) {
-					    console.log(data);
-					});
-				})();
-			
-			});
-			*/
 		});
 	})();
 
@@ -56,7 +44,6 @@ myApp.controller('deputadosController',['$scope','$rootScope','requestFactory','
 		var current_votos = votos + 1;
 		json.votos = current_votos;
 		var id_politicians = json._id;
-		console.log(json);
 		(function getRequestAjax() {
 			requestFactory.getRequestAjax('PUT','/api/politicos/'+id_politicians,json,'insertVotes');
 			$rootScope.$on('insertVotes', function (event, data, status) {

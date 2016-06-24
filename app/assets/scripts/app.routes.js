@@ -4,13 +4,23 @@ myApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', funct
 
 	$stateProvider
 	.state('login', {
-		url: '/',
-		templateUrl: '/views/pages/login.html',
-		controller: 'mainController',
+		url: '/login',
+		templateUrl: '/views/login.html',
+		controller: 'loginController',
 		data: {
           pageTitle: 'MyApp - Login'
-        }
-        /*,
+        }/*,
+		resolve: {
+          skipIfLoggedIn: skipIfLoggedIn
+        }*/
+	})
+	.state('signup', {
+		url: '/signup',
+		templateUrl: '/views/signup.html',
+		controller: 'signupController',
+		data: {
+          pageTitle: 'MyApp - Signup'
+        }/*,
 		resolve: {
           skipIfLoggedIn: skipIfLoggedIn
         }*/
@@ -39,25 +49,27 @@ myApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', funct
 
 	$locationProvider.html5Mode(true);
 
-	function loginRequired($q, $location, $auth) {
+	var loginRequired = function($q, $location, $auth) {
 		var deferred = $q.defer();
 		if ($auth.isAuthenticated()) {
 			deferred.resolve();
 		} else {
-			$location.path('/');
+			$location.path('/login');
 		}
 		return deferred.promise;
-    }
+	};
 
-    function skipIfLoggedIn($q, $location, $auth) {
+	console.log("Aqui");
+	var skipIfLoggedIn = function($q, $location, $auth) {
+		console.log("Entrou");
 		var deferred = $q.defer();
 		if ($auth.isAuthenticated()) {
 			deferred.reject();
-			$location.path('/dashboard');
+			$state.go('/deputados', { redirect: true });
 		} else {
 			deferred.resolve();
 		}
 		return deferred.promise;
-    }
+	};
 
 }]);

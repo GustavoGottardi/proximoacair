@@ -11,15 +11,17 @@
 		<link rel="dns-prefetch" href="//www.google-analytics.com">
 	    <link rel="shortcut icon" href="/assets/images/favicon.png">
 		<link rel="stylesheet" href="/assets/css/main.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 		<base href="/">
 	</head>
-	<body>
+	<body ng-controller="mainController">
 
 	<!-- HEADER -->
 	<header class="header">
 		<nav class="top-bar" data-topbar role="navigation">
 			<ul>
-				<li><img src="./assets/images/logo.png" height="30" width="150"></li>
+				<li class="float-left"><img src="./assets/images/logo.png" class="logo" height="30" width="150"></li>
+				<li class="float-right"><a href="javascript:void(0);" ng-click="logout();">Sair</a></li>
 			</ul>
 		</nav>
 	</header>

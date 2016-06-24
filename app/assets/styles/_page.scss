@@ -6,6 +6,25 @@ body{
 			ul{
 				margin: 0;
 				padding: 0 10px;
+				li{
+					.logo{
+						margin: 7px 0 0 0;
+					}
+					&.float-left{
+						@extend %float-left;
+					}
+					&.float-right{
+						@extend %float-right;
+						a{
+							@extend %display-block;
+							margin: 10px;
+							color: $white;
+							&:hover{
+								color: $red-normal;
+							}
+						}
+					}
+				}
 			}
 		}
 	}

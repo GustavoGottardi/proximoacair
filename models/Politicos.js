@@ -1,4 +1,4 @@
-// Politicos.js
+// Model Politicos
 var mongoose = require('mongoose');
  
 // Cria um novo Schema com os campos que iremos utilizar no model Politicos
